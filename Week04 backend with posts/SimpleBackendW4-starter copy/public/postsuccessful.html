@@ -15,5 +15,32 @@
       <a href="app">Application</a>
     </nav>
     <h1>Post successful!</h1>
+    <div>
+      <ul id="recent-posts"></ul>
+    </div>
+    <script>
+      let recentPosts = document.getElementById("recent-posts");
+
+      let recentPostData = [];
+
+      fetch("/getposts")
+        .then((response) => response.json())
+        .then((fetchedData) => {
+          recentPostData = fetchedData.posts;
+          updateRecentPosts();
+        });
+
+      function updateRecentPosts() {
+        recentPosts.innerHTML = "";
+        recentPostData.forEach((post) => {
+          console.log(post);
+          let li = document.createElement("li");
+          let liText = document.createElement("p");
+          liText.textContent = `${post.message.message} (by ${post.postedBy})`;
+          li.appendChild(liText);
+          recentPosts.appendChild(li);
+        });
+      }
+    </script>
   </body>
 </html>

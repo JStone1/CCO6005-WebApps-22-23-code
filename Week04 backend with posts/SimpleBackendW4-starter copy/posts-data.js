@@ -10,4 +10,8 @@ function addNewPost(userID, message) {
   posts.unshift(myPost);
 }
 
-module.exports = { addNewPost };
+function getPosts(n) {
+  return posts.slice(0, n);
+}
+
+module.exports = { addNewPost, getPosts };
