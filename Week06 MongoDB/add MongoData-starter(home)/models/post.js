@@ -17,6 +17,28 @@ const postSchema = new Schema({
   ],
 });
 
+// Schemas for my own social media app
+const myPostSchema = new Schema({
+  username: String,
+  profileScore: Number,
+  userImage: "?",
+  timePosted: Date,
+  postText: String,
+  postImage: "?",
+  postScore: Number,
+  amountPostVoted: Number,
+  postReview: String,
+});
+
+const myProfileSchema = new Schema({
+  username: String,
+  userImage: "?",
+  bio: String,
+  profileScore: Number,
+  amountProfileVoted: Number,
+  recentPosts: Array,
+});
+
 const Post = model("testpost", postSchema);
 
 function addNewPost(userID, post) {
